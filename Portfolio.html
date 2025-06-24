@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Firdaus Mohammed - Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#6366f1'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+html {
+scroll-behavior: smooth;
+}
+body {
+font-family: 'Inter', sans-serif;
+}
+.custom-progress-bar {
+height: 8px;
+background-color: #e5e7eb;
+border-radius: 4px;
+overflow: hidden;
+position: relative;
+}
+.custom-progress-bar .progress {
+height: 100%;
+border-radius: 4px;
+transition: width 1s ease-in-out;
+}
+.timeline-item::before {
+content: '';
+position: absolute;
+left: -36px;
+top: 0;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+background-color: #3b82f6;
+border: 3px solid white;
+z-index: 1;
+}
+.timeline-item::after {
+content: '';
+position: absolute;
+left: -29px;
+top: 16px;
+bottom: -40px;
+width: 2px;
+background-color: #e5e7eb;
+}
+.timeline-item:last-child::after {
+display: none;
+}
+.custom-checkbox {
+appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+cursor: pointer;
+position: relative;
+transition: all 0.2s ease;
+}
+.custom-checkbox:checked {
+background-color: #3b82f6;
+border-color: #3b82f6;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+top: 3px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+input:not([type="checkbox"]),
+textarea {
+border: 1px solid #e5e7eb;
+border-radius: 8px;
+padding: 0.75rem 1rem;
+width: 100%;
+outline: none;
+transition: border-color 0.2s ease;
+}
+input:not([type="checkbox"]):focus,
+textarea:focus {
+border-color: #3b82f6;
+box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+.project-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.skill-icon {
+transition: transform 0.3s ease;
+}
+.skill-icon:hover {
+transform: scale(1.1);
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+bottom: -4px;
+left: 0;
+width: 0;
+height: 2px;
+background-color: #3b82f6;
+transition: width 0.3s ease;
+}
+.nav-link.active::after,
+.nav-link:hover::after {
+width: 100%;
+}
+@media (max-width: 768px) {
+.mobile-menu {
+transform: translateX(100%);
+transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+visibility: hidden;
+}
+.mobile-menu.active {
+transform: translateX(0);
+visibility: visible;
+}
+body.mobile-menu-open {
+overflow: hidden;
+}
+}
+</style>
+</head>
+<body class="bg-white">
+<!-- Header & Navigation -->
+<header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+<div class="container mx-auto px-4 py-4 flex justify-between items-center">
+<a href="#home" class="text-xl font-['Pacifico'] text-gray-800">Firdaus Mohammed</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#home" class="nav-link active text-gray-800 hover:text-primary transition-colors">Home</a>
+<a href="#projects" class="nav-link text-gray-800 hover:text-primary transition-colors">Projects</a>
+<a href="#skills" class="nav-link text-gray-800 hover:text-primary transition-colors">Skills</a>
+<a href="#resume" class="nav-link text-gray-800 hover:text-primary transition-colors">Resume</a>
+<a href="#contact" class="nav-link text-gray-800 hover:text-primary transition-colors">Contact</a>
+</nav>
+<button id="mobile-menu-button" class="md:hidden w-10 h-10 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-64 bg-white shadow-lg p-6 z-50">
+<div class="flex justify-end mb-8">
+<button id="close-menu" class="w-10 h-10 flex items-center justify-center">
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<nav class="flex flex-col space-y-6">
+<a href="#home" class="text-gray-800 hover:text-primary transition-colors">Home</a>
+<a href="#projects" class="text-gray-800 hover:text-primary transition-colors">Projects</a>
+<a href="#skills" class="text-gray-800 hover:text-primary transition-colors">Skills</a>
+<a href="#resume" class="text-gray-800 hover:text-primary transition-colors">Resume</a>
+<a href="#contact" class="text-gray-800 hover:text-primary transition-colors">Contact</a>
+</nav>
+</div>
+</header>
+<!-- Hero Section -->
+<section id="home" class="pt-24 md:pt-32 pb-16 md:pb-24 relative overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=professional%20modern%20gradient%20background%20with%20soft%20blue%20and%20purple%20tones%2C%20minimalist%20design%2C%20abstract%20shapes%2C%20suitable%20for%20a%20portfolio%20website%20hero%20section%2C%20clean%20and%20elegant%2C%20high-quality%20digital%20art%2C%20professional%20look&width=1920&height=1080&seq=hero1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/40"></div>
+<div class="container mx-auto px-4 relative z-10">
+<div class="flex flex-col md:flex-row items-center w-full">
+<div class="w-full md:w-1/2 mb-10 md:mb-0">
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+Hi, I'm <span class="text-primary">Firdaus Mohammed</span>
+</h1>
+<h2 class="text-xl md:text-2xl font-medium text-gray-700 mb-6">
+Software Developer
+</h2>
+<p class="text-gray-600 text-lg mb-8 max-w-lg">
+I craft elegant, user-centered digital experiences with clean code and thoughtful design. Passionate about creating solutions that make a difference.
+</p>
+<div class="flex flex-wrap gap-4">
+<a href="#projects" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">
+View Projects
+</a>
+<a href="#" class="border border-gray-300 text-gray-700 px-6 py-3 !rounded-button font-medium hover:bg-gray-50 transition-colors whitespace-nowrap flex items-center gap-2">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-download-line"></i>
+</div>
+Download Resume
+</a>
+</div>
+</div>
+<div class="w-full md:w-1/2 flex justify-center md:justify-end">
+<div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+<img src="ff.JPG" alt="Firdaus Mohammed" class="w-full h-full object-cover object-top">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section id="projects" class="py-16 md:py-24 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">My Projects</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Explore my recent work across web development, design, and mobile applications.</p>
+</div>
+<div class="mb-8 flex flex-wrap justify-center gap-4">
+<button class="project-filter active bg-primary text-white px-4 py-2 !rounded-button whitespace-nowrap" data-filter="all">All Projects</button>
+<button class="project-filter bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap border border-gray-200 hover:bg-gray-50" data-filter="web">Web Development</button>
+<button class="project-filter bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap border border-gray-200 hover:bg-gray-50" data-filter="mobile">Mobile Apps</button>
+<button class="project-filter bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap border border-gray-200 hover:bg-gray-50" data-filter="design">UI/UX Design</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="web">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20dashboard%20with%20clean%20interface%2C%20showing%20product%20listings%2C%20analytics%20graphs%2C%20and%20user%20interface%20elements%2C%20professional%20web%20application%20design%2C%20high-quality%20screenshot%20on%20computer%20screen%2C%20blue%20and%20white%20color%20scheme&width=600&height=400&seq=project1&orientation=landscape" alt="E-commerce Platform" class="w-full h-full object-cover object-top transition-transform hover:scale-105">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">E-commerce Platform</h3>
+<p class="text-gray-600 mb-4">A full-featured online store with inventory management, payment processing, and customer analytics.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">React</span>
+<span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+<span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">MongoDB</span>
+</div>
+<a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+View Project
+<div class="w-5 h-5 ml-1 flex items-center justify-center">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="mobile">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=fitness%20mobile%20app%20interface%20on%20smartphone%2C%20showing%20workout%20tracking%20screens%2C%20progress%20charts%2C%20and%20exercise%20library%2C%20clean%20modern%20mobile%20UI%20design%2C%20professional%20app%20screenshot%2C%20blue%20and%20white%20color%20scheme&width=600&height=400&seq=project2&orientation=landscape" alt="Fitness Tracker App" class="w-full h-full object-cover object-top transition-transform hover:scale-105">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Fitness Tracker App</h3>
+<p class="text-gray-600 mb-4">Mobile application for tracking workouts, nutrition, and personal fitness goals with social features.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Flutter</span>
+<span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Firebase</span>
+<span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">Dart</span>
+</div>
+<a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+View Project
+<div class="w-5 h-5 ml-1 flex items-center justify-center">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="design">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=financial%20dashboard%20UI%20design%20with%20data%20visualization%2C%20charts%2C%20graphs%20showing%20investment%20performance%2C%20clean%20modern%20interface%20design%2C%20professional%20UI%2FUX%20design%20mockup%2C%20blue%20and%20white%20color%20scheme&width=600&height=400&seq=project3&orientation=landscape" alt="Financial Dashboard" class="w-full h-full object-cover object-top transition-transform hover:scale-105">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Financial Dashboard</h3>
+<p class="text-gray-600 mb-4">Interactive dashboard for visualizing financial data with customizable widgets and real-time updates.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Figma</span>
+<span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Adobe XD</span>
+<span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Sketch</span>
+</div>
+<a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+View Project
+<div class="w-5 h-5 ml-1 flex items-center justify-center">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="web">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=content%20management%20system%20interface%20showing%20article%20editor%2C%20media%20library%2C%20and%20publishing%20tools%2C%20professional%20web%20application%20design%2C%20clean%20modern%20interface%2C%20blue%20and%20white%20color%20scheme&width=600&height=400&seq=project4&orientation=landscape" alt="Content Management System" class="w-full h-full object-cover object-top transition-transform hover:scale-105">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Content Management System</h3>
+<p class="text-gray-600 mb-4">Custom CMS with advanced editing tools, media management, and multi-user collaboration features.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Vue.js</span>
+<span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">PHP</span>
+<span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">MySQL</span>
+</div>
+<a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+View Project
+<div class="w-5 h-5 ml-1 flex items-center justify-center">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+<!-- Project 5 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="mobile">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=travel%20planning%20mobile%20app%20interface%20showing%20destination%20discovery%2C%20itinerary%20builder%2C%20and%20booking%20features%2C%20clean%20modern%20mobile%20UI%20design%2C%20professional%20app%20screenshot%20on%20smartphone%2C%20blue%20and%20white%20color%20scheme&width=600&height=400&seq=project5&orientation=landscape" alt="Travel Planner App" class="w-full h-full object-cover object-top transition-transform hover:scale-105">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Travel Planner App</h3>
+<p class="text-gray-600 mb-4">Mobile application for planning trips, discovering destinations, and sharing travel experiences.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">React Native</span>
+<span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">GraphQL</span>
+<span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">AWS</span>
+</div>
+<a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+View Project
+<div class="w-5 h-5 ml-1 flex items-center justify-center">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+<!-- Project 6 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-md" data-category="design">
+<div class="h-48 overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=educational%20platform%20interface%20showing%20course%20library%2C%20learning%20modules%2C%20and%20student%20progress%20tracking%2C%20professional%20web%20application%20design%2C%20clean%20modern%20interface%2C%20blue%20and%20white%20color%20scheme&width=600&height=400&seq=project6&orientation=landscape" alt="Educational Platform" class="w-full h-full object-cover object-top transition-transform hover:scale-105">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold text-gray-900 mb-2">Educational Platform</h3>
+<p class="text-gray-600 mb-4">Online learning platform with interactive courses, progress tracking, and certification features.</p>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Figma</span>
+<span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Webflow</span>
+<span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">InVision</span>
+</div>
+<a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+View Project
+<div class="w-5 h-5 ml-1 flex items-center justify-center">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section id="skills" class="py-16 md:py-24">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Skills & Expertise</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">A comprehensive overview of my technical skills and professional expertise.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Programming Languages -->
+<div class="bg-white p-8 rounded-lg shadow-md">
+<div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6 mx-auto">
+<div class="w-8 h-8 flex items-center justify-center text-primary">
+<i class="ri-code-s-slash-line ri-xl"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-center text-gray-900 mb-6">Programming Languages</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">Python</span>
+<span class="text-gray-500">85%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-primary" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">Java</span>
+<span class="text-gray-500">80%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-primary" style="width: 80%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">JavaScript</span>
+<span class="text-gray-500">75%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-primary" style="width: 75%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">PHP</span>
+<span class="text-gray-500">70%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-primary" style="width: 70%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Web Technologies -->
+<div class="bg-white p-8 rounded-lg shadow-md">
+<div class="flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6 mx-auto">
+<div class="w-8 h-8 flex items-center justify-center text-green-600">
+<i class="ri-html5-line ri-xl"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-center text-gray-900 mb-6">Web Technologies</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">HTML</span>
+<span class="text-gray-500">85%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-green-500" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">CSS</span>
+<span class="text-gray-500">80%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-green-500" style="width: 80%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">MongoDB</span>
+<span class="text-gray-500">75%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-green-500" style="width: 75%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-6 mx-auto">
+<div class="w-8 h-8 flex items-center justify-center text-purple-600">
+<i class="ri-tools-line ri-xl"></i>
+</div>
+</div>
+<h3 class="text-xl font-bold text-center text-gray-900 mb-6">Design & Tools</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">Figma</span>
+<span class="text-gray-500">90%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-purple-500" style="width: 90%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">Adobe XD</span>
+<span class="text-gray-500">85%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-purple-500" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">UI/UX Design</span>
+<span class="text-gray-500">85%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-purple-500" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">Git/GitHub</span>
+<span class="text-gray-500">90%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-purple-500" style="width: 90%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-gray-700 font-medium">Docker</span>
+<span class="text-gray-500">75%</span>
+</div>
+<div class="custom-progress-bar">
+<div class="progress bg-purple-500" style="width: 75%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Additional Skills Icons -->
+<div class="mt-16">
+<h3 class="text-xl font-bold text-center text-gray-900 mb-8">Technologies I Work With</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6 justify-items-center">
+<div class="skill-icon w-16 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm">
+<div class="w-10 h-10 flex items-center justify-center text-blue-500">
+<i class="ri-python-line ri-2x"></i>
+</div>
+</div>
+<div class="skill-icon w-16 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm">
+<div class="w-10 h-10 flex items-center justify-center text-orange-600">
+<i class="ri-code-box-line ri-2x"></i>
+</div>
+</div>
+<div class="skill-icon w-16 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm">
+<div class="w-10 h-10 flex items-center justify-center text-yellow-500">
+<i class="ri-javascript-line ri-2x"></i>
+</div>
+</div>
+<div class="skill-icon w-16 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm">
+<div class="w-10 h-10 flex items-center justify-center text-blue-600">
+<i class="ri-html5-line ri-2x"></i>
+</div>
+</div>
+<div class="skill-icon w-16 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm">
+<div class="w-10 h-10 flex items-center justify-center text-blue-400">
+<i class="ri-css3-line ri-2x"></i>
+</div>
+</div>
+<div class="skill-icon w-16 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm">
+<div class="w-10 h-10 flex items-center justify-center text-purple-600">
+<i class="ri-database-2-line ri-2x"></i>
+</div>
+</div>
+<div class="skill-icon w-16 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm">
+<div class="w-10 h-10 flex items-center justify-center text-indigo-600">
+<i class="ri-code-s-slash-line ri-2x"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Resume/Experience Section -->
+<section id="resume" class="py-16 md:py-24 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Experience & Education</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">My professional journey and academic background.</p>
+</div>
+<div class="flex flex-col md:flex-row gap-12">
+<!-- Work Experience -->
+<div class="w-full md:w-1/2">
+<h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+<div class="w-8 h-8 mr-3 flex items-center justify-center text-primary">
+<i class="ri-briefcase-4-line ri-lg"></i>
+</div>
+Work Experience
+</h3>
+<div class="relative pl-10">
+<!-- Experience Item 1 -->
+<div class="timeline-item relative mb-10">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h4 class="text-lg font-bold text-gray-900">Senior Full Stack Developer</h4>
+<p class="text-primary font-medium">TechNova Solutions</p>
+</div>
+<span class="text-sm text-gray-500 whitespace-nowrap">2022 - Present</span>
+</div>
+<p class="text-gray-600 mb-4">Led development of enterprise-level web applications, managed a team of 5 developers, and implemented CI/CD pipelines that reduced deployment time by 40%.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">React</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Node.js</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">AWS</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Docker</span>
+</div>
+</div>
+</div>
+<!-- Experience Item 2 -->
+<div class="timeline-item relative mb-10">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h4 class="text-lg font-bold text-gray-900">Frontend Developer</h4>
+<p class="text-primary font-medium">Digital Creations Inc.</p>
+</div>
+<span class="text-sm text-gray-500 whitespace-nowrap">2019 - 2022</span>
+</div>
+<p class="text-gray-600 mb-4">Developed responsive web applications, collaborated with designers to implement UI/UX improvements, and optimized website performance increasing page load speed by 35%.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">JavaScript</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Vue.js</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">SASS</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Webpack</span>
+</div>
+</div>
+</div>
+<!-- Experience Item 3 -->
+<div class="timeline-item relative">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h4 class="text-lg font-bold text-gray-900">Web Developer Intern</h4>
+<p class="text-primary font-medium">InnoTech Startups</p>
+</div>
+<span class="text-sm text-gray-500 whitespace-nowrap">2018 - 2019</span>
+</div>
+<p class="text-gray-600 mb-4">Assisted in developing website features, fixed bugs in existing codebase, and participated in code reviews and team meetings.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">HTML/CSS</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">JavaScript</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">jQuery</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">PHP</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Education -->
+<div class="w-full md:w-1/2">
+<h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+<div class="w-8 h-8 mr-3 flex items-center justify-center text-primary">
+<i class="ri-graduation-cap-line ri-lg"></i>
+</div>
+Education
+</h3>
+<div class="relative pl-10">
+<!-- Education Item 1 -->
+<div class="timeline-item relative mb-10">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h4 class="text-lg font-bold text-gray-900">BSc Business Information Technology Management</h4>
+<p class="text-primary font-medium">Heritage Christian University, Amasaman-Ghana</p>
+</div>
+<span class="text-sm text-gray-500 whitespace-nowrap">2023 - 2027</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">UI/UX Research</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Advanced Algorithms</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Web Architecture</span>
+</div>
+</div>
+</div>
+<!-- Education Item 2 -->
+<div class="timeline-item relative mb-10">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="flex items-start justify-between mb-4">
+<div>
+<h4 class="text-lg font-bold text-gray-900">Bachelor of Science in Computer Science</h4>
+<p class="text-primary font-medium">University of California, Berkeley</p>
+</div>
+<span class="text-sm text-gray-500 whitespace-nowrap">2012 - 2016</span>
+</div>
+<p class="text-gray-600 mb-4">Focused on software engineering and web development. Participated in multiple hackathons and led the Web Development Club.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Data Structures</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Software Engineering</span>
+<span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full">Database Systems</span>
+</div>
+</div>
+</div>
+<!-- Certifications -->
+<div class="timeline-item relative">
+<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="mb-4">
+<h4 class="text-lg font-bold text-gray-900">Professional Certifications</h4>
+</div>
+<ul class="space-y-3 text-gray-600">
+<li class="flex items-start">
+<div class="w-5 h-5 mt-0.5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<div>
+<p class="font-medium">AWS Certified Solutions Architect</p>
+<p class="text-sm text-gray-500">Amazon Web Services, 2021</p>
+</div>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 mt-0.5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<div>
+<p class="font-medium">Google UX Design Professional Certificate</p>
+<p class="text-sm text-gray-500">Google, 2020</p>
+</div>
+</li>
+<li class="flex items-start">
+<div class="w-5 h-5 mt-0.5 mr-2 flex items-center justify-center text-primary">
+<i class="ri-check-line"></i>
+</div>
+<div>
+<p class="font-medium">Full Stack Web Developer Nanodegree</p>
+<p class="text-sm text-gray-500">Udacity, 2019</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<a href="#" class="inline-flex items-center bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">
+<div class="w-5 h-5 mr-2 flex items-center justify-center">
+<i class="ri-download-line"></i>
+</div>
+Download Full Resume
+</a>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-16 md:py-24">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!</p>
+</div>
+<div class="flex flex-col md:flex-row gap-12">
+<div class="w-full md:w-1/2">
+<form id="contact-form" class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+<input type="text" id="name" name="name" placeholder="Your name" required class="border-none bg-gray-50 focus:ring-2 focus:ring-primary/20 text-gray-700">
+</div>
+<div>
+<label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+<input type="email" id="email" name="email" placeholder="Your email" required class="border-none bg-gray-50 focus:ring-2 focus:ring-primary/20 text-gray-700">
+</div>
+</div>
+<div>
+<label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+<input type="text" id="subject" name="subject" placeholder="Subject" required class="border-none bg-gray-50 focus:ring-2 focus:ring-primary/20 text-gray-700">
+</div>
+<div>
+<label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+<textarea id="message" name="message" rows="5" placeholder="Your message" required class="border-none bg-gray-50 focus:ring-2 focus:ring-primary/20 text-gray-700 resize-none"></textarea>
+</div>
+<div class="flex items-center">
+<input type="checkbox" id="privacy" name="privacy" required class="custom-checkbox">
+<label for="privacy" class="ml-3 text-gray-600 text-sm">I agree to the privacy policy and terms of service.</label>
+</div>
+<button type="submit" class="w-full bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap flex items-center justify-center">
+<div class="w-5 h-5 mr-2 flex items-center justify-center">
+<i class="ri-send-plane-line"></i>
+</div>
+Send Message
+</button>
+</form>
+</div>
+<div class="w-full md:w-1/2">
+<div class="bg-gray-50 p-8 rounded-lg h-full">
+<h3 class="text-xl font-bold text-gray-900 mb-6">Contact Information</h3>
+<div class="space-y-6">
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+<div>
+<p class="text-gray-500 text-sm mb-1">Email</p>
+<a href="mailto:mohammedfirdaus465@gmail.com" class="text-gray-900 font-medium hover:text-primary transition-colors">mohammedfirdaus465@gmail.com</a>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<div>
+<p class="text-gray-500 text-sm mb-1">Phone</p>
+<a href="tel:(+233) 243-66-41-81" class="text-gray-900 font-medium hover:text-primary transition-colors">(+233) 243-66-41-81</a>
+</div>
+</div>
+<div class="flex items-start">
+<div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<div>
+<p class="text-gray-500 text-sm mb-1">Location</p>
+<p class="text-gray-900 font-medium">Domeabra, Accra</p>
+</div>
+</div>
+<div class="pt-6">
+<p class="text-gray-700 font-medium mb-4">Connect with me</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-line ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-github-line ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-twitter-x-line ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full text-gray-600 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-dribbble-line ri-lg"></i>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-gray-200">
+<h4 class="text-gray-900 font-medium mb-4">Current Availability</h4>
+<div class="flex items-center text-green-600 mb-2">
+<div class="w-5 h-5 flex items-center justify-center mr-2">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<p>Available for freelance projects</p>
+</div>
+<p class="text-gray-600 text-sm">I'm currently taking on select freelance projects and open to discussing new opportunities. My typical response time is within 24 hours.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="flex flex-col md:flex-row justify-between items-center mb-8">
+<a href="#home" class="text-2xl font-['Pacifico'] text-white mb-6 md:mb-0">Firdaus Mohammed</a>
+<div class="flex flex-wrap justify-center gap-6">
+<a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
+<a href="#projects" class="text-gray-300 hover:text-white transition-colors">Projects</a>
+<a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a>
+<a href="#resume" class="text-gray-300 hover:text-white transition-colors">Resume</a>
+<a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+</div>
+<div class="flex space-x-4 mt-6 md:mt-0">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-linkedin-line ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-github-line ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-twitter-x-line ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-gray-300 hover:bg-primary hover:text-white transition-colors">
+<i class="ri-dribbble-line ri-lg"></i>
+</a>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 Firdaus Mohammed. All rights reserved.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<a href="#" class="text-gray-400 text-sm hover:text-white transition-colors">Privacy Policy</a>
+<a href="#" class="text-gray-400 text-sm hover:text-white transition-colors">Terms of Service</a>
+<a href="#" class="text-gray-400 text-sm hover:text-white transition-colors">Cookies Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Back to Top Button -->
+<button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300">
+<i class="ri-arrow-up-line ri-lg"></i>
+</button>
+<script id="navigation-script">
+document.addEventListener('DOMContentLoaded', function() {
+// Mobile menu toggle
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const closeMenuButton = document.getElementById('close-menu');
+const mobileMenu = document.getElementById('mobile-menu');
+function openMobileMenu() {
+mobileMenu.classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+mobileMenu.classList.remove('active');
+document.body.style.overflow = '';
+}
+mobileMenuButton.addEventListener('click', openMobileMenu);
+closeMenuButton.addEventListener('click', closeMobileMenu);
+// Close mobile menu when clicking on a link
+const mobileLinks = mobileMenu.querySelectorAll('a');
+mobileLinks.forEach(link => {
+link.addEventListener('click', closeMobileMenu);
+});
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+if (mobileMenu.classList.contains('active') && 
+!mobileMenu.contains(event.target) && 
+!mobileMenuButton.contains(event.target)) {
+closeMobileMenu();
+}
+});
+// Close mobile menu on escape key press
+document.addEventListener('keydown', function(event) {
+if (event.key === 'Escape' && mobileMenu.classList.contains('active')) {
+closeMobileMenu();
+}
+});
+// Active navigation link highlighting
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+window.addEventListener('scroll', function() {
+let current = '';
+sections.forEach(section => {
+const sectionTop = section.offsetTop;
+const sectionHeight = section.clientHeight;
+if (window.pageYOffset >= sectionTop - 200) {
+current = section.getAttribute('id');
+}
+});
+navLinks.forEach(link => {
+link.classList.remove('active');
+if (link.getAttribute('href') === `#${current}`) {
+link.classList.add('active');
+}
+});
+});
+});
+</script>
+<script id="project-filter-script">
+document.addEventListener('DOMContentLoaded', function() {
+const filterButtons = document.querySelectorAll('.project-filter');
+const projectCards = document.querySelectorAll('.project-card');
+filterButtons.forEach(button => {
+button.addEventListener('click', function() {
+// Remove active class from all buttons
+filterButtons.forEach(btn => {
+btn.classList.remove('active', 'bg-primary', 'text-white');
+btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-200', 'hover:bg-gray-50');
+});
+// Add active class to clicked button
+this.classList.add('active', 'bg-primary', 'text-white');
+this.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-200', 'hover:bg-gray-50');
+const filter = this.getAttribute('data-filter');
+projectCards.forEach(card => {
+if (filter === 'all') {
+card.style.display = 'block';
+} else {
+if (card.getAttribute('data-category') === filter) {
+card.style.display = 'block';
+} else {
+card.style.display = 'none';
+}
+}
+});
+});
+});
+});
+</script>
+<script id="skills-animation-script">
+document.addEventListener('DOMContentLoaded', function() {
+const progressBars = document.querySelectorAll('.custom-progress-bar .progress');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+// Get the width from the style attribute
+const width = entry.target.style.width;
+// Reset width to 0 first
+entry.target.style.width = '0%';
+// Force reflow
+entry.target.offsetWidth;
+// Set the width back to trigger animation
+setTimeout(() => {
+entry.target.style.width = width;
+}, 100);
+// Unobserve after animation
+observer.unobserve(entry.target);
+}
+});
+}, { threshold: 0.1 });
+progressBars.forEach(bar => {
+observer.observe(bar);
+});
+});
+</script>
+<script id="contact-form-script">
+document.addEventListener('DOMContentLoaded', function() {
+const contactForm = document.getElementById('contact-form');
+contactForm.addEventListener('submit', function(e) {
+e.preventDefault();
+// Get form values
+const name = document.getElementById('name').value;
+const email = document.getElementById('email').value;
+const subject = document.getElementById('subject').value;
+const message = document.getElementById('message').value;
+// Simple validation
+if (!name || !email || !subject || !message) {
+alert('Please fill in all fields');
+return;
+}
+// Email validation
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email)) {
+alert('Please enter a valid email address');
+return;
+}
+// Simulate form submission
+const submitButton = contactForm.querySelector('button[type="submit"]');
+const originalText = submitButton.innerHTML;
+submitButton.disabled = true;
+submitButton.innerHTML = '<div class="w-5 h-5 flex items-center justify-center"><i class="ri-loader-4-line ri-spin"></i></div> Sending...';
+setTimeout(() => {
+alert('Thank you for your message! I will get back to you soon.');
+contactForm.reset();
+submitButton.disabled = false;
+submitButton.innerHTML = originalText;
+}, 1500);
+});
+});
+</script>
+<script id="back-to-top-script">
+document.addEventListener('DOMContentLoaded', function() {
+const backToTopButton = document.getElementById('back-to-top');
+window.addEventListener('scroll', function() {
+if (window.pageYOffset > 300) {
+backToTopButton.classList.remove('opacity-0', 'invisible');
+backToTopButton.classList.add('opacity-100', 'visible');
+} else {
+backToTopButton.classList.remove('opacity-100', 'visible');
+backToTopButton.classList.add('opacity-0', 'invisible');
+}
+});
+backToTopButton.addEventListener('click', function() {
+window.scrollTo({
+top: 0,
+behavior: 'smooth'
+});
+});
+});
+</script>
+</body>
+</html>
